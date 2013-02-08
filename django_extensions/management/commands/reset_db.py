@@ -120,10 +120,10 @@ Type 'yes' to continue, or 'no' to cancel: """ % (settings.DATABASE_NAME,))
             logging.info('Executing... "' + create_query + '"')
             connection.query(create_query)
 
-        elif engine == 'postgresql' or engine == 'postgresql_psycopg2' or postgis.match(engine):
+        elif engine == 'postgresql' or engine == 'postgresql_psycopg2' or engine == 'gevent' or postgis.match(engine):
             if engine == 'postgresql':
                 import psycopg as Database  # NOQA
-            elif engine == 'postgresql_psycopg2' or postgis.match(engine):
+            elif engine == 'postgresql_psycopg2' or engine == 'gevent' or postgis.match(engine):
                 import psycopg2 as Database  # NOQA
 
             if settings.DATABASE_NAME == '':
